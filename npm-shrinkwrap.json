@@ -1,12 +1,12 @@
 {
-  "name": "matterbridge-example-dynamic-platform",
-  "version": "1.0.20",
+  "name": "matterbridge-example-playground-platform",
+  "version": "1.0.21",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
-      "name": "matterbridge-example-dynamic-platform",
-      "version": "1.0.20",
+      "name": "matterbridge-example-playground-platform",
+      "version": "1.0.21",
       "hasInstallScript": true,
       "license": "MIT",
       "dependencies": {
@@ -34,7 +34,7 @@
       },
       "funding": {
         "type": "buymeacoffee",
-        "url": "https://www.buymeacoffee.com/luligugithub"
+        "url": "https://www.buymeacoffee.com/karlorzgithub"
       }
     },
     "node_modules/@ampproject/remapping": {

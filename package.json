@@ -1,22 +1,22 @@
 {
-  "name": "matterbridge-example-dynamic-platform",
+  "name": "matterbridge-example-playground-platform",
   "version": "1.0.21",
-  "description": "Matterbridge dynamic plugin",
-  "author": "https://github.com/Luligu",
+  "description": "Matterbridge playground plugin",
+  "author": "https://github.com/karlorz",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Luligu/matterbridge-example-dynamic-platform.git"
+    "url": "git+https://github.com/karlorz/matterbridge-example-dynamic-platform.git"
   },
   "bugs": {
-    "url": "https://github.com/Luligu/matterbridge-example-dynamic-platform/issues"
+    "url": "https://github.com/karlorz/matterbridge-example-dynamic-platform/issues"
   },
   "funding": {
     "type": "buymeacoffee",
-    "url": "https://www.buymeacoffee.com/luligugithub"
+    "url": "https://www.buymeacoffee.com/karlorzgithub"
   },
   "keywords": [
     "matterbridge",

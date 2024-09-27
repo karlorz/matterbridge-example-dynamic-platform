@@ -287,11 +287,17 @@ export class ExampleMatterbridgeDynamicPlatform extends MatterbridgeDynamicPlatf
               increasing = true;
             }
           }
+          // Set localTemperature
           this.thermo?.setAttribute(ThermostatCluster.id, 'localTemperature', temperature, this.thermo.log);
           this.thermo?.log.info(`Set thermostat localTemperature to ${temperature / 100}°C`);
+          // Set TemperatureMeasurement measuredValue
+          const measuredValue = temperature;
+          const tempChild = this.thermo?.getChildEndpointByName('Temperature');
+          tempChild?.getClusterServer(TemperatureMeasurement.Cluster)?.setMeasuredValueAttribute(measuredValue);
+          this.thermo?.log.info(`Set TemperatureMeasurement measuredValue to ${measuredValue / 100}°C`);
         }
       },
-      3 * 1000, // 3 seconds
+      3 * 1000 + 100, // 3 seconds
     );
   }
 

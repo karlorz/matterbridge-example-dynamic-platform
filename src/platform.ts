@@ -16,6 +16,7 @@ import {
 } from 'matterbridge';
 import { Matterbridge, MatterbridgeDevice, MatterbridgeDynamicPlatform } from 'matterbridge';
 // import { isValidBoolean, isValidNumber } from 'matterbridge/utils';
+import { isValidNumber } from 'matterbridge/utils';
 import { AnsiLogger, db, hk, or } from 'matterbridge/logger';
 
 export class ExampleMatterbridgeDynamicPlatform extends MatterbridgeDynamicPlatform {
@@ -269,18 +270,29 @@ export class ExampleMatterbridgeDynamicPlatform extends MatterbridgeDynamicPlatf
     this.thermo?.setAttribute(ThermostatCluster.id, 'localTemperature', 1600, this.thermo.log);
     this.thermo?.setAttribute(ThermostatCluster.id, 'systemMode', Thermostat.SystemMode.Auto, this.thermo.log);
     this.thermo?.log.info('Set thermostat initial localTemperature to 16°C and mode Auto');
-    /*     // Increment localTemperature every minute
+    // Simulate localTemperature change every 3 seconds
+    let increasing = true;
     this.thermoInterval = setInterval(
       () => {
         let temperature = this.thermo?.getAttribute(ThermostatCluster.id, 'localTemperature', this.thermo.log);
         if (isValidNumber(temperature, 1600, 2400)) {
-          temperature = temperature + 100 >= 2400 ? 1600 : temperature + 100;
+          if (increasing) {
+            temperature += 100;
+            if (temperature >= 2400) {
+              increasing = false;
+            }
+          } else {
+            temperature -= 100;
+            if (temperature <= 1600) {
+              increasing = true;
+            }
+          }
           this.thermo?.setAttribute(ThermostatCluster.id, 'localTemperature', temperature, this.thermo.log);
           this.thermo?.log.info(`Set thermostat localTemperature to ${temperature / 100}°C`);
         }
       },
-      60 * 1000 + 600,
-    ); */
+      3 * 1000, // 3 seconds
+    );
   }
 
   override async onShutdown(reason?: string) {

@@ -10,12 +10,12 @@ import {
   Thermostat,
   ThermostatCluster,
   WindowCovering,
-  WindowCoveringCluster,
+  // WindowCoveringCluster,
   onOffSwitch,
   powerSource,
 } from 'matterbridge';
 import { Matterbridge, MatterbridgeDevice, MatterbridgeDynamicPlatform } from 'matterbridge';
-import { isValidBoolean, isValidNumber } from 'matterbridge/utils';
+// import { isValidBoolean, isValidNumber } from 'matterbridge/utils';
 import { AnsiLogger, db, hk, or } from 'matterbridge/logger';
 
 export class ExampleMatterbridgeDynamicPlatform extends MatterbridgeDynamicPlatform {
@@ -230,7 +230,7 @@ export class ExampleMatterbridgeDynamicPlatform extends MatterbridgeDynamicPlatf
     // Set switch to off
     this.switch?.setAttribute(OnOffCluster.id, 'onOff', false, this.switch.log);
     this.switch?.log.info('Set switch initial onOff to false');
-    // Toggle switch onOff every minute
+    /*     // Toggle switch onOff every minute
     this.switchInterval = setInterval(
       () => {
         const status = this.switch?.getAttribute(OnOffCluster.id, 'onOff', this.switch.log);
@@ -240,12 +240,12 @@ export class ExampleMatterbridgeDynamicPlatform extends MatterbridgeDynamicPlatf
         }
       },
       60 * 1000 + 100,
-    );
+    ); */
 
     // Set cover to target = current position and status to stopped (current position is persisted in the cluster)
     this.cover?.setWindowCoveringTargetAsCurrentAndStopped();
     this.cover?.log.info('Set cover initial targetPositionLiftPercent100ths = currentPositionLiftPercent100ths and operationalStatus to Stopped.');
-    // Increment cover position every minute
+    /*     // Increment cover position every minute
     this.coverInterval = setInterval(
       () => {
         let position = this.cover?.getAttribute(WindowCoveringCluster.id, 'currentPositionLiftPercent100ths', this.cover.log);
@@ -263,13 +263,13 @@ export class ExampleMatterbridgeDynamicPlatform extends MatterbridgeDynamicPlatf
         }
       },
       60 * 1000 + 400,
-    );
+    ); */
 
     // Set local to 16°C
     this.thermo?.setAttribute(ThermostatCluster.id, 'localTemperature', 1600, this.thermo.log);
     this.thermo?.setAttribute(ThermostatCluster.id, 'systemMode', Thermostat.SystemMode.Auto, this.thermo.log);
     this.thermo?.log.info('Set thermostat initial localTemperature to 16°C and mode Auto');
-    // Increment localTemperature every minute
+    /*     // Increment localTemperature every minute
     this.thermoInterval = setInterval(
       () => {
         let temperature = this.thermo?.getAttribute(ThermostatCluster.id, 'localTemperature', this.thermo.log);
@@ -280,7 +280,7 @@ export class ExampleMatterbridgeDynamicPlatform extends MatterbridgeDynamicPlatf
         }
       },
       60 * 1000 + 600,
-    );
+    ); */
   }
 
   override async onShutdown(reason?: string) {
